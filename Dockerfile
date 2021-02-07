@@ -1,7 +1,7 @@
-FROM ubuntu:18.04
+FROM python:3.8-buster
 
 RUN apt-get update
-RUN apt-get install python3-pip wget unzip git curl -y
+RUN apt-get install wget unzip git curl -y
 
 WORKDIR /app
 
