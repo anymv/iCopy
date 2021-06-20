@@ -14,5 +14,3 @@ RUN apt-get update && \
     mv iCopy-* iCopy && \
     chmod +x iCopy/iCopy.py && \
     pip3 install -r iCopy/requirements.txt
-
-CMD bash -c "$(curl -sL "$SCRIPT")"
