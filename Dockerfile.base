@@ -1,0 +1,18 @@
+FROM python:3.8-buster
+
+WORKDIR /app
+
+RUN apt-get update && \
+    apt-get install wget unzip git curl -y && \
+    wget -qO- https://api.github.com/repos/mawaya/rclone/releases/latest \
+    | grep browser_download_url | grep linux-amd64 | cut -d '"' -f 4 \
+    | wget --no-verbose -i- && \
+    unzip -j fclone*.zip -d /usr/bin && chmod 777 /usr/bin/fclone && rm -rf fclone*.zip && \
+    mkdir -p /root/.config/rclone && \
+    wget https://github.com/fxxkrlab/iCopy/archive/v0.2.2-Post.2.zip && \
+    unzip -qq v0.2.2-Post.2.zip && \
+    mv iCopy-* iCopy && \
+    chmod +x iCopy/iCopy.py && \
+    pip3 install -r iCopy/requirements.txt
+
+CMD bash -c "$(curl -sL "$SCRIPT")"
