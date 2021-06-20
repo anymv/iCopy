@@ -1,4 +1,4 @@
-name: GDUtils Base Image
+name: Base Builder
 
 on: workflow_dispatch
 
